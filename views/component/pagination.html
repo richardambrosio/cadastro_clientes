@@ -1,0 +1,24 @@
+<nav aria-label="Navegação">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="{$route}?page={$previous}" aria-label="Anterior">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+      </li>
+      {loop="$links"}
+      <li class="page-item {if="$currentPage == $value.text"}active"{/if}">
+        <a class="page-link" href="{$value.href}">{$value.text}</a>
+      </li>
+      {/loop}
+      <li class="page-item">
+      <a class="page-link" href="{$route}?page={$next}" aria-label="Próximo">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<div class="container d-flex justify-content-center">
+  <small class="text-muted">
+      Mostrando {$currentRecords} de {$totalRecords} registros
+  </small>
+</div>

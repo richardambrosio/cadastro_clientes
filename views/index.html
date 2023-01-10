@@ -1,0 +1,107 @@
+<div class="container">
+    <h5><i class="fa fa-user-plus"></i> Cadastrar/Editar Cliente</h5>
+    <hr>
+    <form method="post" action="/">
+        {if="isset($input['id_cliente'])"}
+            <input type="hidden" name="id_cliente" value="{$input['id_cliente']}">
+        {/if}
+        <div class="row">
+            <div class="col-md-4 col-12">
+                <div class="mb-2">
+                    <label for="nome" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="nome" value="{$input['nome']}">
+                </div>
+            </div>
+            <div class="col-md-4 col-12">
+                <div class="mb-2">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{$input['email']}">
+                </div>
+            </div>
+            <div class="col-md-4 col-12">
+                <div class="mb-2">
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <input type="text" class="form-control" id="telefone" name="telefone" value="{$input['telefone']}">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-6">
+                <div class="mb-2">
+                    <label for="cep" class="form-label">CEP</label>
+                    <input type="text" class="form-control" id="cep" aria-describedby="cepHint" name="cep" value="{$input['cep']}">
+                    <div id="cepHint" class="form-text">Ex.: 00000-000</div>
+                </div>
+            </div>
+            <div class="col-md-4 col-6">
+                <div class="mb-2">
+                    <label for="logradouro" class="form-label">Logradouro</label>
+                    <input type="logradouro" class="form-control" id="logradouro" name="logradouro" value="{$input['logradouro']}">
+                </div>
+            </div>
+            <div class="col-md-2 col-6">
+                <div class="mb-2">
+                    <label for="numero" class="form-label">Número</label>
+                    <input type="numero" class="form-control" id="numero" name="numero" value="{$input['numero']}">
+                </div>
+            </div>
+            <div class="col-md-4 col-6">
+                <div class="mb-2">
+                    <label for="complemento" class="form-label">Complemento</label>
+                    <input type="complemento" class="form-control" id="complemento" name="complemento" value="{$input['complemento']}">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="mb-2">
+                    <label for="bairro" class="form-label">Bairro</label>
+                    <input type="bairro" class="form-control" id="bairro" name="bairro" value="{$input['bairro']}">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-2">
+                    <label for="cidade" class="form-label">Cidade</label>
+                    <input type="cidade" class="form-control" id="cidade" name="cidade" value="{$input['cidade']}">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-2">
+                    <label for="uf" class="form-label">Estado</label>
+                    <input type="uf" class="form-control" id="uf" name="uf" value="{$input['uf']}">
+                </div>
+            </div>
+        </div>
+        <div class="mt-2">
+            <button type="submit" class="btn btn-success">Enviar</button>
+        </div>
+    </form>
+</div>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h5><i class="fa fa-users"></i> Clientes</h5>
+            <hr>
+            {$pagination}
+            <br>
+            {loop="$clients"}
+                <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title">{$value.nome}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{$value.email}</h6>
+                    <p class="card-text">
+                        Telefone: {$value.telefone}<br>
+                        Endereço: {$value.logradouro}, {$value.numero} {$value.complemento}. {$value.bairro}, {$value.cidade} - {$value.uf}<br>
+                        Login: {$value.login}<br>
+                    </p>
+
+                    <a href="/{$value.id_cliente}" class="btn btn-outline-info">Editar</a>
+                    <a href="/delete/{$value.id_cliente}" class="btn btn-outline-danger" onclick="return confirm('Deseja excluir este cliente? A ação não pode ser desfeita.')">Excluir</a>
+                    </div>
+                </div>
+                <br>
+            {/loop}
+        </div>
+    </div>
+</div>

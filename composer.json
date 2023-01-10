@@ -1,0 +1,21 @@
+{
+    "name": "richard/login",
+    "description": "Sistema básico de cadastro de clientes",
+    "type": "project",
+    "require": {
+        "slim/slim": "^4.11",
+        "slim/psr7": "^1.6",
+        "rain/raintpl": "3"
+    },
+    "authors": [
+        {
+            "name": "Richard Ambrosio",
+            "email": "richard.ambrosio1@live.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app\\src"
+        }
+    }
+}
